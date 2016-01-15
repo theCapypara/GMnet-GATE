@@ -1,0 +1,29 @@
+{
+    "name": "gmnet-gate",
+    "version": "0.0.1dev",
+    "description": "Master / Lobby Server for GMnet PUNCH - the NAT Traversal solution for Game Maker.",
+    "dependencies": {
+        "winston": "latest",
+        "typescript": "latest"
+    },
+    "main": "gmnet_gate.js",
+    "directories": {
+        "app": "./app"
+    },
+    "devDependencies": {},
+    "author": "Marco Köpcke <parakoopa@live.de>",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Parakoopa/GMnet-PUNCH.git"
+    },
+    "keywords": [
+        "gamemaker",
+        "game-server",
+        "nat-traversal"
+    ],
+    "bugs": {
+        "url": "https://github.com/Parakoopa/GMnet-PUNCH/issues"
+    },
+    "homepage": "https://gmnet-engine.org/gate"
+}

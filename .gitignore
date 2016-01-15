@@ -1,0 +1,7 @@
+npm-debug.log
+config.json
+node_modules/
+build/
+typings/
+gmnet_gate.log
+.idea/
