@@ -1,2 +1,7 @@
 {
+  "port" : 6520,
+  "name" : "",
+  "loglevel": "info",
+  "logtofile": "",
+  "logtofilelevel": ""
 }

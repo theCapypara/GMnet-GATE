@@ -3,8 +3,9 @@
     "version": "0.0.1dev",
     "description": "Master / Lobby Server for GMnet PUNCH - the NAT Traversal solution for Game Maker.",
     "dependencies": {
-        "winston": "latest",
-        "typescript": "latest"
+        "commander": "^2.9.0",
+        "typescript": "latest",
+        "winston": "latest"
     },
     "main": "gmnet_gate.js",
     "directories": {
