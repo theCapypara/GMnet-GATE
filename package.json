@@ -16,7 +16,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Parakoopa/GMnet-PUNCH.git"
+        "url": "git+https://github.com/Parakoopa/GMnet-GATE.git"
     },
     "keywords": [
         "gamemaker",
@@ -24,7 +24,7 @@
         "nat-traversal"
     ],
     "bugs": {
-        "url": "https://github.com/Parakoopa/GMnet-PUNCH/issues"
+        "url": "https://github.com/Parakoopa/GMnet-GATE/issues"
     },
     "homepage": "https://gmnet-engine.org/gate"
 }
