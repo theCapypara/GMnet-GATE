@@ -1,6 +1,7 @@
 ![GMnet GATE](http://parakoopa.de/GMnet/gate.png)
 #GMnet GATE Repository
-TODO
+This is currently work-in-progress. Please check back later :)  
+It will soon replace the old GMnet GATE.PUNCH.
 
 **More information about GMnet products can be found on the website:**  
 https://gmnet-engine.org
