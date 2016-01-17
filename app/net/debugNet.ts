@@ -33,6 +33,12 @@ export default class DebugNet implements ConnectionInstanceInterface {
                 case 'send':
                     Router.route(words.join(" "), 'debug', 0, enums.ConnectionType.TCP, self);
                     break;
+                case 'models':
+                    console.log(require('util').inspect(modelManager.debugGetModels(), {
+                        'depth' : 3,
+                        colors: true
+                    }));
+                    break;
                 case 'exit':
                 case 'quit':
                     process.exit(0);
@@ -46,7 +52,7 @@ export default class DebugNet implements ConnectionInstanceInterface {
 
     public stop() {
         logger.debug('Starting DebugNet interface.');
-        modelManager.deleteAllModels('debug', 0);
+        modelManager.deleteAllModels(modelManager.ftaregt('debug', 0));
     }
 
     public respond(response: any, controller: AbstractController, status? : enums.ResponseStatus, errorMessage? : string) {

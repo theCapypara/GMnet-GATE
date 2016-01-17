@@ -12,10 +12,12 @@ import * as enums from './enums';
 import ConnectionInstanceInterface from "./net/connectionInstanceInterface";
 import AbstractModel from "./model/abstractModel";
 
+// When changing please also change check in router
 interface Request {
     version         : number,       // 1400 TODO
     route           : string,       // "Core"
     requestMethod   : string,       // "methodName"
+    modelId         : string|number,// "0"
     requestArgs     : any
 }
 
@@ -25,6 +27,7 @@ interface Response {
     errorMessage    : string,
     route           : string,       // "Core"
     requestMethod   : string,       // "methodName"
+    modelId         : string|number // "0"
     responseArgs    : any
 }
 

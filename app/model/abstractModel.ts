@@ -10,6 +10,12 @@ abstract class AbstractModel {
     protected data: any = {};
 
     /**
+     * Maximum number of instances per client that can be created of this model
+     * @type {number}
+     */
+    static maximumInstances = 1000;
+
+    /**
      * Set custom data
      * @param key
      * @param value

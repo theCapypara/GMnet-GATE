@@ -25,6 +25,14 @@ module Router {
                           connectionInstance : ConnectionInstanceInterface) {
         try {
             var data:Request = JSON.parse(jsonData);
+            // Test if data is valid
+            if (!data.hasOwnProperty("version") ||
+                !data.hasOwnProperty("route") ||
+                !data.hasOwnProperty("requestMethod") ||
+                !data.hasOwnProperty("modelId") ||
+                !data.hasOwnProperty("requestArgs")) {
+                throw new Error();
+            }
         } catch (e) {
             logger.warn('Got invalid request from ' + rAddress + ":" + rPort);
             return;
@@ -109,6 +117,7 @@ module Router {
             errorMessage  : errorMessage,
             route : requestData.route,
             requestMethod : requestData.requestMethod,
+            modelId : requestData.modelId,
             responseArgs : responseObject
         };
         callback(JSON.stringify(response));

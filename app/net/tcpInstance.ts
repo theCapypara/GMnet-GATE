@@ -32,7 +32,7 @@ export default class TcpInstance implements ConnectionInstanceInterface {
      * Stop the client: Deletes all models registered by this client.
      */
     public stop() {
-        modelManager.deleteAllModels(this.socket.localAddress, this.socket.localPort);
+        modelManager.deleteAllModels(modelManager.ftaregt(this.socket.localAddress, this.socket.localPort));
     }
 
     /**

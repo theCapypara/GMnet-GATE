@@ -47,13 +47,15 @@ abstract class AbstractRegisterableController extends AbstractController {
         // Load model - this will throw an error if the model is missing and prevent dispatch
         var modelClassName = this.getModelName();
         var connectionInfo = this.getConnectionInfo();
-
-        if (this.getOriginalRequestData().requestMethod == 'register') {
+        var requestData = this.getOriginalRequestData();
+        if (requestData.requestMethod == 'register') {
             return true;
         }
 
         try {
-            var model = modelManager.loadModel(modelClassName, connectionInfo.remoteAddress, connectionInfo.remotePort);
+            var model = modelManager.loadModel(modelClassName,
+                modelManager.ftaregt(connectionInfo.remoteAddress, connectionInfo.remotePort),
+                requestData.modelId.toString());
             if (!model || !(model instanceof AbstractModel)) {
                 throw new GateError('Model does not exist', enums.ResponseStatus.MODEL_NOT_FOUND);
             }
@@ -74,18 +76,21 @@ abstract class AbstractRegisterableController extends AbstractController {
     registerAction() {
         var modelClassName = this.getModelName();
         var connectionInfo = this.getConnectionInfo();
+        var requestData = this.getOriginalRequestData();
         try {
             if (connectionInfo.connectionType != enums.ConnectionType.TCP) {
                 throw new GateError('Models can only be registered via TCP.', enums.ResponseStatus.MODEL_REGISTRATION_OVER_UDP);
             }
             logger.log('verbose', 'Matched registration');
             if (modelClassName == '') {
-                throw new GateError('Router: Controller can\'t be registered', enums.ResponseStatus.NO_MODEL_FOR_CONTROLLER);
+                throw new GateError('Controller can\'t be registered', enums.ResponseStatus.NO_MODEL_FOR_CONTROLLER);
             }
             // Register model instance
-            var model = modelManager.registerModel(modelClassName, connectionInfo.remoteAddress, connectionInfo.remotePort);
+            var model = modelManager.registerModel(modelClassName,
+                modelManager.ftaregt(connectionInfo.remoteAddress, connectionInfo.remotePort),
+                requestData.modelId.toString());
             if (!model) {
-                throw new GateError('Router: Model could not be registered', enums.ResponseStatus.MODEL_ERROR);
+                throw new GateError('Controller: Model could not be registered', enums.ResponseStatus.MODEL_ERROR);
             }
             this.respond('ok'); //TODO
         } catch (e) {
