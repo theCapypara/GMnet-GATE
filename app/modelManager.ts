@@ -93,7 +93,6 @@ module ModelManager {
         if (models[modelClassName]) {
             if (models[modelClassName][target]) {
                 // XXX: Should probably implement internal count since this method causes memory overhead:
-                console.log('XXXXXXXXXXXXXXX'+Object.keys(models[modelClassName][target]).length);
                 return Object.keys(models[modelClassName][target]).length;
             }
         }
@@ -106,7 +105,6 @@ module ModelManager {
         } catch (e) {
             throw new GateError('ModelManager: Could not find model '+ modelClassName, enums.ResponseStatus.MODEL_CLASS_NOT_FOUND);
         }
-        console.log("YYYYYYYYYYYYY"+ModelClass['default'].maximumInstances);
         if (modelCount(modelClassName, target) >= ModelClass['default'].maximumInstances) {
             deleteAllModels(target);
             logger.log('info', 'Deleted all ' + modelClassName + ' models for ' + target + ' because client exceeded maximum number of these.');
