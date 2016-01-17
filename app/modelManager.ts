@@ -9,10 +9,6 @@ import * as enums from './enums';
 import GateError from "./gateError";
 
 module ModelManager {
-    interface ModelCollection {
-        [targetNid: string]: AbstractModel;
-    }
-
     /**
      * models = {
      *   "modelclass" = {  // eg. "server"
@@ -22,7 +18,15 @@ module ModelManager {
      *    }
      * }
      */
-    var models : ModelCollection[]  = [];
+    interface ModelCollection {
+        [modelclass: string]: {
+            [target: string]: {
+                [id: string]: AbstractModel
+            }
+        };
+    }
+
+    var models : ModelCollection  = {};
 
     export function registerModel(modelClassName : string,
                                   target: string,
